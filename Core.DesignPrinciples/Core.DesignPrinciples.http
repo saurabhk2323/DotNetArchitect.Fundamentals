@@ -1,0 +1,6 @@
+@Core.DesignPrinciples_HostAddress = http://localhost:5069
+
+GET {{Core.DesignPrinciples_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

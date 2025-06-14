@@ -1,0 +1,66 @@
+# === .NET Core ===
+**/bin/
+**/obj/
+**/TestResults/
+**/.vs/
+**/.vscode/
+**/*.user
+**/*.suo
+
+# === Rider / JetBrains IDE ===
+.idea/
+*.sln.iml
+
+# === Common System Files ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# === Logs ===
+*.log
+*.tlog
+
+# === Build Results ===
+*.dll
+*.exe
+*.app
+*.pdb
+
+# === Publish Output ===
+**/publish/
+**/out/
+*.zip
+
+# === NuGet Packages ===
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# === User-Specific Files ===
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# === Resharper ===
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# === Optional: Docker artifacts ===
+**/Dockerfile.*
+**/docker-compose.override.yml
+
+# === Secrets ===
+secrets.json
+appsettings.Development.json  # (optional: only if sensitive data inside)
+
+# === Backup Files ===
+*.bak
+*.old
+*.orig
+*.tmp
+
+# === Dotnet Watch ===
+**/.dotnet-watch.json
