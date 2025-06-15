@@ -4,10 +4,15 @@ using Core.DesignPrinciples.Models;
 
 namespace Core.DesignPrinciples.Services
 {
+    /*
+     OrderService is given a lot of responsibilities which are not directly interconnected
+     Notification Service should be placed in a different class so as the Inventory
+     */
     public class OrderService : IOrderService
     {
         private readonly ILogger<OrderService> _logger;
 
+        // database is not configured for this projet, in memory role play for database
         private readonly IList<Order> _orders;
 
         private readonly IList<Product> _inventory;
@@ -89,6 +94,10 @@ namespace Core.DesignPrinciples.Services
             }
         }
 
+        /*Observation: It's violating OCP, when a new notification type is introduced, this function needs to be re-written/updated
+         Rather than serving all notification services inside a same function, the responsibilities can be offloaded with the use of base/children relation - inheritances
+
+         */
         public void SendNotification(NotificationType type, string message)
         {
             switch (type)
