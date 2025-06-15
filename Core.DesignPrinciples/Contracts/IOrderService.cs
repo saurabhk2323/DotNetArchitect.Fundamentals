@@ -15,12 +15,5 @@ namespace Core.DesignPrinciples.Contracts
         void UpdateOrder(UpdateOrderDto updateOrderDto);
 
         void CancelOrder(string orderId);
-
-        void SendNotification(NotificationType type, string message);
-
-        public void UpdateInventory(string? productId, int quantity);
-
-        public bool CheckProductAvailability(string? productId, int quantity);
-
     }
 }
