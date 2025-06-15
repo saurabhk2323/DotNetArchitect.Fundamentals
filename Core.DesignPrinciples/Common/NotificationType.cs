@@ -3,6 +3,7 @@
     public enum NotificationType
     {
         sms,
-        email
+        email,
+        push
     }
 }
