@@ -10,5 +10,8 @@ public class Program
 
         Console.WriteLine("\nRunning Singleton pattern:\n");
         Core.DesignPatterns.Creational.Singleton.Runner.Execute();
+
+        Console.WriteLine("\nRunning Abstract Factory pattern:\n");
+        Core.DesignPatterns.Creational.AbstractFactory.Runner.Execute();
     }
 }
