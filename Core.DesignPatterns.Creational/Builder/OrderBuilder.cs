@@ -23,6 +23,36 @@ namespace Core.DesignPatterns.Creational.Builder
             return this;
         }
 
+        public OrderBuilder WithDiscount(decimal discountPercentage)
+        {
+            _order.DiscountPercentage = discountPercentage;
+            return this;
+        }
+
+        public OrderBuilder WithShippingType(string shippingType)
+        {
+            _order.ShippingType = shippingType;
+            return this;
+        }
+
+        public OrderBuilder ApplyPromoCode(string promoCode)
+        {
+            _order.PromoCode = promoCode;
+            return this;
+        }
+
+        public OrderBuilder PayWith(string paymentMethod)
+        {
+            _order.PaymentMethod = paymentMethod;
+            return this;
+        }
+
+        public OrderBuilder MarkAsGift()
+        {
+            _order.IsGift = true;
+            return this;
+        }
+
         public Order Build() => _order;
     }
 }
