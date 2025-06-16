@@ -1,4 +1,4 @@
-﻿using Core.DesignPatterns.Creational;
+﻿using Core.DesignPatterns;
 
 public class Program
 {
@@ -13,5 +13,8 @@ public class Program
 
         Console.WriteLine("\nRunning Abstract Factory pattern:\n");
         Core.DesignPatterns.Creational.AbstractFactory.Runner.Execute();
+
+        Console.WriteLine("\nRunning Builder pattern:\n");
+        Core.DesignPatterns.Creational.Builder.Runner.Execute();
     }
 }
