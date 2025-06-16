@@ -1,6 +1,6 @@
 ﻿namespace Core.DesignPatterns.Shared.Models
 {
-    public class Order
+    public class Order:ICloneable
     {
         public int Id { get; set; }
         public List<Product> Products { get; set; } = new();
@@ -21,6 +21,20 @@
                 }
                 return total;
             }
+        }
+
+        public object Clone()
+        {
+            return new Order
+            {
+                Id = this.Id,
+                IsGift = this.IsGift,
+                DiscountPercentage = this.DiscountPercentage,
+                ShippingType = this.ShippingType,
+                PromoCode = this.PromoCode,
+                PaymentMethod = this.PaymentMethod,
+                Products = this.Products.Select(p => (Product) p.Clone()).ToList()
+            };
         }
     }
 }

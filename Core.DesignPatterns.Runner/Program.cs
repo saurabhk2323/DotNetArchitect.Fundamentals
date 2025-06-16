@@ -16,5 +16,8 @@ public class Program
 
         Console.WriteLine("\nRunning Builder pattern:\n");
         Core.DesignPatterns.Creational.Builder.Runner.Execute();
+
+        Console.WriteLine("\nRunning Prototype pattern:\n");
+        Core.DesignPatterns.Creational.Prototype.Runner.Execute();
     }
 }
