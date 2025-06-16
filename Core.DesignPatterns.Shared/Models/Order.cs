@@ -1,4 +1,4 @@
-﻿namespace Core.DesignPatterns.Shared.Models
+namespace Core.DesignPatterns.Shared.Models
 {
     public class Order:ICloneable
     {

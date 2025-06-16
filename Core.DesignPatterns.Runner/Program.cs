@@ -1,4 +1,4 @@
-﻿using Core.DesignPatterns;
+using Core.DesignPatterns;
 
 public class Program
 {
