@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPrinciples", "Core.DesignPrinciples\Core.DesignPrinciples.csproj", "{A7D4B815-0695-4045-AA7D-1C2503165B25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Creational", "Core.DesignPatterns.Creational\Core.DesignPatterns.Creational.csproj", "{2F01BD61-C1BA-4760-A292-1B1164019F72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Driver", "Core.DesignPatterns.Runner\Core.DesignPatterns.Driver.csproj", "{A295231D-F131-4D18-BD44-B1E3BD7B69AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Shared", "Core.DesignPatterns.Shared\Core.DesignPatterns.Shared.csproj", "{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{A7D4B815-0695-4045-AA7D-1C2503165B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D4B815-0695-4045-AA7D-1C2503165B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D4B815-0695-4045-AA7D-1C2503165B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F01BD61-C1BA-4760-A292-1B1164019F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F01BD61-C1BA-4760-A292-1B1164019F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F01BD61-C1BA-4760-A292-1B1164019F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F01BD61-C1BA-4760-A292-1B1164019F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A295231D-F131-4D18-BD44-B1E3BD7B69AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A295231D-F131-4D18-BD44-B1E3BD7B69AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A295231D-F131-4D18-BD44-B1E3BD7B69AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A295231D-F131-4D18-BD44-B1E3BD7B69AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
