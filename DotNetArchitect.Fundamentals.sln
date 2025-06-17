@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Driver"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Shared", "Core.DesignPatterns.Shared\Core.DesignPatterns.Shared.csproj", "{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DesignPatterns.Structural", "Core.DesignPatterns.Structural\Core.DesignPatterns.Structural.csproj", "{B6B47E38-912B-4860-8455-30D0300B2DF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3D1328E-CC4E-4FFC-94A9-247C9932ABFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B47E38-912B-4860-8455-30D0300B2DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B47E38-912B-4860-8455-30D0300B2DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B47E38-912B-4860-8455-30D0300B2DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B47E38-912B-4860-8455-30D0300B2DF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
