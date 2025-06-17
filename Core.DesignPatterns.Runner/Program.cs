@@ -25,5 +25,8 @@ public class Program
 
         Console.WriteLine("\nRunning Decorator pattern:\n");
         Core.DesignPatterns.Structural.Decorator.Runner.Execute();
+
+        Console.WriteLine("\nRunning Proxy pattern:\n");
+        Core.DesignPatterns.Structural.Proxy.Runner.Execute();
     }
 }

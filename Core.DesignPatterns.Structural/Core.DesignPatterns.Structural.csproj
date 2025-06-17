@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core.DesignPatterns.Shared\Core.DesignPatterns.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
