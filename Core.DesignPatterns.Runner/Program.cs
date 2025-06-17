@@ -31,5 +31,8 @@ public class Program
 
         Console.WriteLine("\nRunning Composite pattern:\n");
         Core.DesignPatterns.Structural.Composite.Runner.Execute();
+
+        Console.WriteLine("\nRunning Facade pattern:\n");
+        Core.DesignPatterns.Structural.Facade.Runner.Execute();
     }
 }
