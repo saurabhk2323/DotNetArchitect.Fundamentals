@@ -31,3 +31,6 @@ EmailSender --> Send(to, message)
 LoggingNotificationDecorator --> LoggingNotificationDecorator(INotificationSender inner) --> Send(to, message) --> print logs, execute send, print logs
 
 ✅ Add Retry Decorator:
+RetryNotificationDecorator --> RetryNotificationDecorator(INotificationSender inner) --> Send(to, message) --> try...send...catch..send
+
+“Decorator allowed me to add retry and logging to our notification system without modifying the original sender. Each behavior is independently testable and combinable.”
