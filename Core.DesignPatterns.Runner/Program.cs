@@ -28,5 +28,8 @@ public class Program
 
         Console.WriteLine("\nRunning Proxy pattern:\n");
         Core.DesignPatterns.Structural.Proxy.Runner.Execute();
+
+        Console.WriteLine("\nRunning Composite pattern:\n");
+        Core.DesignPatterns.Structural.Composite.Runner.Execute();
     }
 }
