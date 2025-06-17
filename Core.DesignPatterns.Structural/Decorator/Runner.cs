@@ -11,7 +11,8 @@ namespace Core.DesignPatterns.Structural.Decorator
         public static void Execute()
         {
             INotificationSender sender = new EmailSender();
-            LoggingNotificationDecorator loggingWrapper = new LoggingNotificationDecorator(sender);
+            RetryNotificationDecorator retryWrapper = new RetryNotificationDecorator(sender);
+            LoggingNotificationDecorator loggingWrapper = new LoggingNotificationDecorator(retryWrapper);
             loggingWrapper.Send("user@example.com", "Your product shipped.");
         }
     }
