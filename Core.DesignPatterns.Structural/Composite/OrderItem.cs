@@ -10,7 +10,7 @@ namespace Core.DesignPatterns.Structural.Composite
     {
         public string Name { get; }
 
-        public decimal Price { get; }
+        public decimal Price { get; private set; }
 
         public OrderItem(string name, decimal price)
         {
@@ -19,5 +19,15 @@ namespace Core.DesignPatterns.Structural.Composite
         }
 
         public decimal GetTotalPrice() => Price;
+
+        public void ApplyDiscount(decimal percentage)
+        {
+            Price -= (Price * (percentage / 100));
+        }
+
+        public string GenerateInvoice()
+        {
+            return $"{Name}: Rs.{Price}";
+        }
     }
 }

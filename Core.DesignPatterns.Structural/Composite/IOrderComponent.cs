@@ -10,5 +10,7 @@ namespace Core.DesignPatterns.Structural.Composite
     {
         string Name { get; }
         decimal GetTotalPrice();
+        void ApplyDiscount(decimal percentage);
+        string GenerateInvoice();
     }
 }

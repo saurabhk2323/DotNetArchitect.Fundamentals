@@ -26,5 +26,19 @@ namespace Core.DesignPatterns.Structural.Composite
         {
             return _components.Sum(c => c.GetTotalPrice());
         }
+
+        public void ApplyDiscount(decimal percentage)
+        {
+            foreach (var item in _components)
+            {
+                item.ApplyDiscount(percentage);
+            }
+        }
+
+        public string GenerateInvoice()
+        {
+            var invoiceLines = _components.Select(i => i.GenerateInvoice());
+            return $"[Bundle: {Name}]\n" + string.Join("\n", invoiceLines);
+        }
     }
 }

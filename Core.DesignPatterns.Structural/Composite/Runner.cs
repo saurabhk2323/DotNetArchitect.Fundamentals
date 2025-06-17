@@ -10,19 +10,30 @@ namespace Core.DesignPatterns.Structural.Composite
     {
         public static void Execute()
         {
-            var item1 = new OrderItem("Keyboard", 1500);
-            var item2 = new OrderItem("Mouse", 700);
-            var item3 = new OrderItem("Monitor", 10000);
+            var keyboard = new OrderItem("Mechanical Keyboard", 2000);
+            var mouse = new OrderItem("Gaming Mouse", 1500);
 
-            var peripheralsGroup = new OrderGroup("Peripherals");
-            peripheralsGroup.AddComponent(item1);
-            peripheralsGroup.AddComponent(item2);
+            var bundle = new OrderGroup("Gaming Combo - B1G1");
+            bundle.AddComponent(keyboard);
+            bundle.AddComponent(mouse);
 
-            var workstationGroup = new OrderGroup("Workstation Order");
-            workstationGroup.AddComponent(peripheralsGroup);
-            workstationGroup.AddComponent(item3);
+            // Apply a combo discount of 10%
+            bundle.ApplyDiscount(10);
 
-            Console.WriteLine($"{workstationGroup.Name} total: Rs.{workstationGroup.GetTotalPrice()}");
+            var monitor = new OrderItem("24\" Monitor", 9000);
+
+            // Apply a sell out 50% discount to everything
+            monitor.ApplyDiscount(50);
+            var fullOrder = new OrderGroup("Full Workstation Order");
+            fullOrder.AddComponent(bundle);
+            fullOrder.AddComponent(monitor);
+
+            // Apply a festive 10% discount to everything
+            fullOrder.ApplyDiscount(10);
+
+            // Show total and invoice
+            Console.WriteLine($"Total Order Price: Rs.{fullOrder.GetTotalPrice()}\n");
+            Console.WriteLine("Invoice:\n" + fullOrder.GenerateInvoice());
         }
     }
 }
