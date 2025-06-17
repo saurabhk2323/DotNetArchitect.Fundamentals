@@ -27,3 +27,6 @@ A basic implementation:
 
 EmailSender --> Send(to, message)
 
+✅ Add Logging Decorator:
+LoggingNotificationDecorator --> LoggingNotificationDecorator(INotificationSender inner) --> Send(to, message) --> print logs, execute send, print logs
+
