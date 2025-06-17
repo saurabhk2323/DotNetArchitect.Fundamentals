@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core.DesignPatterns.Creational\Core.DesignPatterns.Creational.csproj" />
     <ProjectReference Include="..\Core.DesignPatterns.Shared\Core.DesignPatterns.Shared.csproj" />
+    <ProjectReference Include="..\Core.DesignPatterns.Structural\Core.DesignPatterns.Structural.csproj" />
   </ItemGroup>
 
 </Project>
