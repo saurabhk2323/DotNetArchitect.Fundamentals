@@ -22,7 +22,7 @@ public class Program
 
         Console.WriteLine("\nRunning Adapter pattern:\n");
         Core.DesignPatterns.Structural.Adapter.Runner.Execute();
-        
+
         Console.WriteLine("\nRunning Decorator pattern:\n");
         Core.DesignPatterns.Structural.Decorator.Runner.Execute();
     }
