@@ -34,5 +34,8 @@ public class Program
 
         Console.WriteLine("\nRunning Facade pattern:\n");
         Core.DesignPatterns.Structural.Facade.Runner.Execute();
+
+        Console.WriteLine("\nRunning Bridge pattern:\n");
+        Core.DesignPatterns.Structural.Bridge.Runner.Execute();
     }
 }
