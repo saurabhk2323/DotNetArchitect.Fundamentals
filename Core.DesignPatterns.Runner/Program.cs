@@ -37,5 +37,8 @@ public class Program
 
         Console.WriteLine("\nRunning Bridge pattern:\n");
         Core.DesignPatterns.Structural.Bridge.Runner.Execute();
+
+        Console.WriteLine("\nRunning Flyweight pattern:\n");
+        Core.DesignPatterns.Structural.Flyweight.Runner.Execute();
     }
 }
