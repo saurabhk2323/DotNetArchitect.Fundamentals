@@ -41,7 +41,10 @@ public class Program
         //Console.WriteLine("\nRunning Flyweight pattern:\n");
         //Core.DesignPatterns.Structural.Flyweight.Runner.Execute();
 
-        Console.WriteLine("\nRunning Strategy pattern:\n");
-        Core.DesignPatterns.Behavioral.Strategy.Runner.Execute();
+        //Console.WriteLine("\nRunning Strategy pattern:\n");
+        //Core.DesignPatterns.Behavioral.Strategy.Runner.Execute();
+
+        Console.WriteLine("\nRunning Observer pattern:\n");
+        Core.DesignPatterns.Behavioral.Observer.Runner.Execute();
     }
 }
