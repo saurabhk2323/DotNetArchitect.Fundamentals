@@ -47,7 +47,10 @@ public class Program
         //Console.WriteLine("\nRunning Observer pattern:\n");
         //Core.DesignPatterns.Behavioral.Observer.Runner.Execute();
 
-        Console.WriteLine("\nRunning Command pattern:\n");
-        Core.DesignPatterns.Behavioral.Command.Runner.Execute();
+        //Console.WriteLine("\nRunning Command pattern:\n");
+        //Core.DesignPatterns.Behavioral.Command.Runner.Execute();
+
+        Console.WriteLine("\nRunning Chain of responsibility pattern:\n");
+        Core.DesignPatterns.Behavioral.ChainOfResponsibility.Runner.Execute();
     }
 }
