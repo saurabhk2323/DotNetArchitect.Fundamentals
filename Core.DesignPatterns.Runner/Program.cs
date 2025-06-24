@@ -44,7 +44,10 @@ public class Program
         //Console.WriteLine("\nRunning Strategy pattern:\n");
         //Core.DesignPatterns.Behavioral.Strategy.Runner.Execute();
 
-        Console.WriteLine("\nRunning Observer pattern:\n");
-        Core.DesignPatterns.Behavioral.Observer.Runner.Execute();
+        //Console.WriteLine("\nRunning Observer pattern:\n");
+        //Core.DesignPatterns.Behavioral.Observer.Runner.Execute();
+
+        Console.WriteLine("\nRunning Command pattern:\n");
+        Core.DesignPatterns.Behavioral.Command.Runner.Execute();
     }
 }
