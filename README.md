@@ -100,10 +100,10 @@ These patterns are concerned with *algorithms and the assignment of responsibili
 
 ## 🚀 Running the Examples
 
-This project includes a `Core.DesignPatterns.Runner` console application that can be used to execute the example code for each design pattern.
+This project includes a `Core.DesignPatterns.Driver` console application that can be used to execute the example code for each design pattern.
 
 To run a specific design pattern's example:
-1.  Open the `Core.DesignPatterns.Runner/Program.cs` file.
+1.  Open the `Core.DesignPatterns.Driver/Program.cs` file.
 2.  In the `Main` method, you will find commented-out lines for executing each pattern's `Runner.Execute()` method.
 3.  Uncomment the line corresponding to the design pattern you wish to run. For example, to run the **Factory Method** pattern:
     ```csharp
