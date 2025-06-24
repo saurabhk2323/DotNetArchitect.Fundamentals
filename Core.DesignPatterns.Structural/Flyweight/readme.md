@@ -1,163 +1,65 @@
-﻿🧠 What Is the Flyweight Pattern?
-The Flyweight Pattern is used to minimize memory usage by sharing as much data as possible with similar objects.
+﻿# Flyweight Design Pattern 🍃
 
-🧭 When to Use It (Architect's View)
-You have a very large number of objects at runtime (e.g., millions of Product entries).
+## 📜 Purpose
+The **Flyweight** pattern is used to minimize memory usage or computational expenses by sharing as much data as possible with other similar objects. It is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory. Often, some parts of the object state can be shared, and it's common to hold them in external data structures and pass them to the flyweight objects temporarily when they are used.
 
-Many of these objects share common, immutable data.
+The pattern separates an object's state into:
+*   **Intrinsic State**: Data that is shared among many objects (e.g., a character glyph in a text editor, a product category). This state is stored in the flyweight object.
+*   **Extrinsic State**: Data that is unique to each instance and cannot be shared (e.g., the position of a character on a page, the specific product name and price). This state is passed to the flyweight's methods by the client.
 
-You want to externalize and reuse the shared state to optimize memory/performance.
+## 🤔 When to Use
+*   When an application uses a large number of objects.
+*   Storage costs are high because of the sheer quantity of objects.
+*   Most object state can be made extrinsic (passed to methods rather than stored in the object).
+*   Many groups of objects may be replaced by relatively few shared objects once extrinsic state is removed.
+*   The application doesn't depend on object identity. Since flyweight objects can be shared, identity comparisons will return true for conceptually distinct objects if they are represented by the same flyweight.
 
-🎯 Real Use Case 1: Product Catalog
-Problem:
-You have a web app that lists:
+## 🌟 .NET Analogy
+*   **`System.String` Interning**: When you have multiple string literals with the same value in your code, the .NET runtime often stores only one copy of that string in memory (string interning pool). Subsequent string literals with the same value will reference this single instance. This is a form of flyweight where the string's character data is the shared intrinsic state.
+*   **`System.Drawing.Brush` and `System.Drawing.Pen` objects**: In GDI+, frequently used brushes and pens (like `Brushes.Red` or `Pens.Black`) are often cached and reused rather than creating new GDI objects each time.
+*   **`System.Reflection.Emit.OpCodes`**: Each IL opcode is represented by a static readonly field on the `OpCodes` class, ensuring only one instance per opcode.
+*   **`System.DBNull.Value`**: A single, shared instance representing a database null.
 
-10,000+ Product items.
+## 🚀 Domain Scenario: 🛍️ Product Catalog Optimization
+Consider an e-commerce application displaying thousands or millions of products. Each product might have unique properties like `ProductName` and `Price` (extrinsic state), but also shared properties like `Brand`, `Category`, and `Warranty` information (intrinsic state). Storing this shared information repeatedly for each product instance would consume a lot of memory.
 
-Each item has:
+The Flyweight pattern helps by creating shared `ProductFlyweight` objects for common combinations of Brand, Category, and Warranty. Each `OrderItem` (or Product display object) will then hold its unique data and a reference to a shared `ProductFlyweight` object.
 
-Name, Price (unique per item)
+### ✨ Key Components:
+*   **`ProductFlyweight` (Flyweight)**:
+    *   Stores the intrinsic state that is shared: `Brand`, `Category`, `Warranty`.
+    *   The constructor takes these shared properties.
+    *   Has a method `Display(string name, decimal price)` that takes extrinsic state (product name, price) as parameters to display the full product information.
+*   **`FlyweightFactory` (Flyweight Factory)**:
+    *   Creates and manages flyweight objects.
+    *   Maintains a pool (e.g., a `Dictionary`) of existing flyweights.
+    *   `GetFlyweight(string brand, string category, string warranty)`:
+        *   Checks if a flyweight with the given intrinsic state already exists in the pool.
+        *   If yes, returns the existing instance.
+        *   If no, creates a new `ProductFlyweight`, adds it to the pool, and then returns it.
+        *   This ensures that flyweights with the same intrinsic state are shared.
+*   **`OrderItem` (Client/UnsharedConcreteFlyweight Context)**:
+    *   Represents an individual order item or product entry.
+    *   Stores the extrinsic state: `ProductName`, `Price`.
+    *   Holds a reference to a `ProductFlyweight` object, which contains the shared intrinsic state.
+    *   Its `PrintDetails()` method calls the `Display()` method on its `ProductFlyweight`, passing its extrinsic state.
+*   **`Runner` (Client)**:
+    *   Uses the `FlyweightFactory` to get `ProductFlyweight` objects.
+    *   Creates `OrderItem` instances, providing them with their unique extrinsic state and the shared `ProductFlyweight`.
+    *   Calls `PrintDetails()` on `OrderItem` instances to display product information.
 
-Brand, Category, Warranty Terms (shared by thousands of items)
+### ⚙️ How it Works:
+1.  The client (`Runner`) needs to display several order items.
+2.  For each item, it first requests a `ProductFlyweight` from the `FlyweightFactory` based on the item's shared properties (brand, category, warranty).
+    *   The factory generates a unique key from these shared properties.
+    *   If a flyweight for this key already exists in its cache, it returns the cached instance.
+    *   Otherwise, it creates a new `ProductFlyweight` with these shared properties, caches it, and returns it.
+3.  The client then creates an `OrderItem` instance, passing the unique properties (name, price) and the obtained (possibly shared) `ProductFlyweight`.
+4.  When `orderItem.PrintDetails()` is called:
+    *   The `OrderItem` invokes the `Display()` method on its `ProductFlyweight` instance.
+    *   It passes its extrinsic state (name, price) to this `Display()` method.
+    *   The `ProductFlyweight.Display()` method then uses both its intrinsic state (brand, category, warranty) and the passed extrinsic state to show the complete product details.
 
-👉 You don’t want to store the same brand/category string 10,000 times.
+This way, if multiple `OrderItem`s share the same brand, category, and warranty (e.g., many "MacBook Air" items from "Apple", "Laptop" category, with "1 Year" warranty), they will all reference the *same* `ProductFlyweight` object, significantly reducing memory consumption compared to storing this information in each `OrderItem`.
 
-✅ Flyweight Solution:
-Move shared fields (Brand, Category, Warranty) into a ProductFlyweight class.
-
-Store them in a central factory that reuses existing flyweights.
-
-----------------------------------------------------------------
-
-🎯 Use Case 2: Notification Template Flyweight
-Imagine you have:
-
-Thousands of notifications sent daily
-
-Most notifications share:
-
-A template (e.g., Order Confirmation)
-
-A language
-
-A channel
-
-Rather than creating new template objects each time, you use Flyweight to share them.
-
-----------------------------------------------------------------
-🧠 Architectural Thinking: What is Intrinsic vs Extrinsic?
-Intrinsic (shared)	Extrinsic (external/dynamic)
-Brand, Category, Warranty	Product Name, Price
-Notification Template & Channel	Recipient, Timestamp, Dynamic message
-Order Status Messages	Actual Order ID or Line Item Total
-
-📋 Notebook Summary
-Aspect					Notes
-Pattern					Flyweight
-Purpose					Reduce memory usage by sharing common object state
-Key Terms				Intrinsic (shared), Extrinsic (passed-in)
-Factory Role			Centralized flyweight object pool
-Domain Examples			Product Catalog, Notification Templates, Order Items
-Benefit					Memory efficiency at scale
-Interview Line			“Used Flyweight in a product catalog to avoid redundant brand/category metadata and improve performance while rendering thousands of items.”
-
-✅ Interview-Ready Narration
-“In our product microservice, we needed to render thousands of product cards in the UI. Most of them had the same brand and category. 
-So we applied the Flyweight pattern: extracted shared fields into a ProductFlyweight and used a factory to manage them. 
-This let us reuse memory-heavy metadata, improving performance especially in high-volume scenarios.”
-
-----------------------------------------------------------------
-
-🧱 Database Analogy
-Let’s apply this to your domain — OrderItem and Product:
-
-🧩 Intrinsic (Shared) Data
-Stored once in a ProductMetadata table:
-
-ProductTypeID (PK)	Brand	Category	Warranty	Specs
-101	Apple	Laptop	1 Year	M2 Chip
-102	Dell	Laptop	2 Years	i7, 16 GB
-
-🧩 Extrinsic (Dynamic) Data
-Stored in OrderItem table:
-
-OrderItemID	ProductName	Price	ProductTypeID (FK)
-1	MacBook Air M2	₹120000	101
-2	MacBook Pro M2	₹180000	101
-3	Dell Inspiron 15	₹70000	102
-
-👉 So yes: Each OrderItem references a ProductMetadata — just like a Flyweight.
-
-🔄 Retrieving Order Details (Two Tables Join)
-When you need to view a complete order, your query joins both:
-
-sql
-Copy
-Edit
-SELECT 
-    o.ProductName,
-    o.Price,
-    p.Brand,
-    p.Category,
-    p.Warranty
-FROM OrderItem o
-JOIN ProductMetadata p
-    ON o.ProductTypeID = p.ProductTypeID
-WHERE o.OrderItemID = 1;
-You get:
-
-arduino
-Copy
-Edit
-"MacBook Air M2", ₹120000, "Apple", "Laptop", "1 Year"
-🤖 In Application Code (Flyweight Logic)
-Your OrderItem domain object might look like:
-
-csharp
-Copy
-Edit
-public class OrderItem
-{
-    public string ProductName { get; set; }
-    public decimal Price { get; set; }
-    public ProductFlyweight ProductInfo { get; set; } // shared metadata
-}
-The ProductFlyweight is loaded either:
-
-At service startup and cached in memory (FlyweightFactory)
-
-Or lazy-loaded when accessed
-
-🧠 When This Becomes Powerful
-You cache metadata (ProductFlyweight) — maybe even from Redis
-
-You keep your OrderItem table lean (no duplication of brand/category/warranty/etc.)
-
-You decouple volatile info (like price or stock) from static info (like brand/warranty)
-
-✅ So, to your original question:
-"To fetch an order, will we query two tables?"
-
-✔️ Yes, absolutely — and that's good design:
-Query Design	Reason
-Join two tables	Normalize memory-heavy data, avoid redundancy
-Lookup flyweight keys	Cache in-memory, fewer DB hits
-Use with ORM (EF Core)	Yes, with navigation properties and eager/lazy loading
-
-🧠 Bonus: Applying in Notification System
-For NotificationTemplate:
-
-TemplateID	Title	Language	Channel
-1	Order Confirmed	en-US	Email
-2	Payment Failed	en-US	SMS
-
-NotificationLog (Extrinsic):
-
-LogID	UserID	Timestamp	TemplateID (FK)	Custom Data (JSON)
-
-🔁 Again: Your service combines flyweight metadata + runtime data for final output.
-
-✅ Final Thought
-Think of Flyweight not just as a memory pattern — but as a principle of reference-based reuse.
-
-In enterprise systems, this means designing lookup tables, normalized reference data, and shared caches across large volumes.
+The distinction between intrinsic (shared, stored in flyweight) and extrinsic (unique, passed to flyweight methods) state is crucial for the Flyweight pattern.
