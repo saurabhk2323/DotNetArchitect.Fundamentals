@@ -116,7 +116,7 @@ To run a specific design pattern's example:
     Core.DesignPatterns.Creational.Factory.Runner.Execute();
     ```
 4.  Ensure only the desired pattern's runner is uncommented to avoid multiple outputs.
-5.  Build and run the `Core.DesignPatterns.Runner` project. The output will be displayed in the console.
+5.  Build and run the `Core.DesignPatterns.Driver` project. The output will be displayed in the console.
 
 Each design pattern's implementation typically includes a `Runner.cs` file with an `Execute()` method that demonstrates its usage.
 
